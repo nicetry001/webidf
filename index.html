@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetIDF Demo</title>
+    <title>Web Identity Federation Demo</title>
     <meta name="author" content="acantril">
     <meta name="google-signin-scope" content="profile email">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.19.min.js"></script>
     <script src="script.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Include Google API client library -->
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,19 +50,18 @@
             height: 20px; /* Adjust the height of the icon */
         }
     </style>
-    <script>
-        // Load Google API client library asynchronously
-        function loadGoogleAPIClient(callback) {
-            gapi.load('auth2', callback);
-        }
-
-        // Sign out function using Google API client library
+    <script type="text/javascript">
         function signOut() {
-            loadGoogleAPIClient(function() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out from Google IDF.');
-                });
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                auth2.disconnect();
+            });
+    
+        }
+    
+        function onLoad() {
+            gapi.load('auth2', function() {
+                gapi.auth2.init();
             });
         }
     </script>
