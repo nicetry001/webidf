@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetIDF Demo</title>
+    <meta name="author" content="acantril">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.19.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-container {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        #viewer, #output {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+        .g_id_signin,
+        .g_id_signout {
+            color: #4285F4;
+            border: 1px solid #4285F4;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+        }
+        .g_id_signin img,
+        .g_id_signout img {
+            margin-right: 10px;
+            width: 20px; /* Adjust the width of the icon */
+            height: 20px; /* Adjust the height of the icon */
+        }
+    </style>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="form-container">
+        <div id="g_id_onload"
+             data-client_id="507731686548-ru6gk1nh5239p1h6kol088biqt3bt2vb.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="onSignIn"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
+        <div class="g_id_signout" onclick="signOut()">
+            <img src="https://www.gstatic.com/images/icons/material/system/1x/exit_to_app_black_24dp.png" alt="Sign Out">
+            Sign out
+        </div>
+    </div>
+    
+    <form>
+        <div id="viewer"></div>
+        <div id="output"></div>
+    </form>
+
+</body>
+</html>
