@@ -10,6 +10,7 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.19.min.js"></script>
     <script src="script.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Include Google API client library -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,10 +51,18 @@
         }
     </style>
     <script>
+        // Load Google API client library asynchronously
+        function loadGoogleAPIClient(callback) {
+            gapi.load('auth2', callback);
+        }
+
+        // Sign out function using Google API client library
         function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
+            loadGoogleAPIClient(function() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out from Google IDF.');
+                });
             });
         }
     </script>
