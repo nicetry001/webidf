@@ -8,7 +8,7 @@ This repository contains a simple serverless application that demonstrates the i
 
 ## Architecture
 
-![webidf](https://github.com/nicetry001/webidf/assets/85026477/2906b97d-7028-4add-8c99-26459aaf0644)
+![Untitled Diagram drawio](https://github.com/nicetry001/webidf/assets/85026477/2d68bc8a-171d-4980-8913-f029b9ca616a)
 
 
 ## Technologies Used
