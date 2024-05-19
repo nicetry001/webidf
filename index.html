@@ -10,7 +10,6 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.19.min.js"></script>
     <script src="script.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,21 +49,6 @@
             height: 20px; /* Adjust the height of the icon */
         }
     </style>
-    <script type="text/javascript">
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                auth2.disconnect();
-            });
-    
-        }
-    
-        function onLoad() {
-            gapi.load('auth2', function() {
-                gapi.auth2.init();
-            });
-        }
-    </script>
 </head>
 <body>
 
@@ -77,9 +61,6 @@
              data-auto_prompt="false">
         </div>
         <div class="g_id_signin" data-type="standard"></div>
-        <div class="g_id_signout" onclick="signOut()">
-            <img src="https://www.gstatic.com/images/icons/material/system/1x/exit_to_app_black_24dp.png" alt="Sign Out">
-            Sign out
         </div>
     </div>
     
